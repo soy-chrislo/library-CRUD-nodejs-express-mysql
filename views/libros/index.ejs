@@ -1,0 +1,50 @@
+<%- include ../layouts/header.ejs %> 
+    <div class="container">
+        <br>
+        <br>
+        <a href="/libros/crear" type="button" class="btn btn-primary">Crear libro</a>
+        <br>
+        <br>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>IMAGEN</th>
+                    <th>ACCIONES</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for( let libro = 0; libro < libros.length; libro++ ) { %>
+                        <tr>
+                            <td scope="row"> <%=libros[libro].id%> </td>
+                            <td> <%=libros[libro].nombre%> </td>
+                            <td> 
+                                <!-- Gracias a express.static() toda la carpeta /public se comparte de forma global para /views, de esta forma no es necesario trazar la ruta desde este punto hasta el fichero. -->
+                                <img src="images/<%=libros[libro].imagen%>" class="img-thumbnail" width="100" alt="">
+                                <%=libros[libro].imagen%> 
+                            </td>
+                            <td>
+                                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                    <form class="form-inline" method="get" action="/libros/editar/<%=libros[libro].id%>">
+                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                    </form>
+                                </div>
+                                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                    <form class="form-inline" method="post" action="/libros/eliminar/<%=libros[libro].id%>">
+                                        <button type="submit" class="btn btn-danger">Borrar</button>
+                                    </form>
+                                </div>
+                             </td>
+                        </tr>
+                    <% } %>
+                    
+                    <tr>
+                        <td scope="row"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+        </table>
+
+<%- include ../layouts/footer.ejs %> 

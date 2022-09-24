@@ -1,0 +1,28 @@
+<%- include ../layouts/header.ejs %>
+<br>
+<br>
+<div class="card">
+    <div class="card-header">
+        Formulario de Creación de Libros
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del Libro</h4>
+        <p class="card-text">
+            <form action="/libros" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="input">Nombre:</label>
+                    <input type="text" name="nombre" id="input" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="input">Imagen</label>
+                    <input type="file" class="form-control-file" name="imagen" id="input">
+                </div>
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a class="btn btn-danger" href="../libros/">Cancelar</a>
+            </form>
+        </p>
+    </div>
+</div>
+
+<%- include ../layouts/footer.ejs %>
+

@@ -1,0 +1,31 @@
+<%- include ../layouts/header.ejs %>
+<br>    
+<br>
+<div class="card">
+    <div class="card-header">
+        Modificación
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Edición del registro</h4>
+        <p class="card-text">
+            <form action="../actualizar/<%=libro.id%>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<%=libro.id%>">
+                <div class="form-group">
+                    <label for="input">Nombre:</label>
+                    <input type="text" value="<%=libro.nombre%>" name="nombre" id="input" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="input">Imagen</label>
+                    <img src="../../images/<%=libro.imagen%>" class="img-thumbnail" width="100" alt="img book">
+                    <input type="file" class="form-control-file" name="imagen" id="input">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success">Actualizar</button>
+                <a href="/libros" class="btn btn-danger">Cancelar</a>
+            </form>
+        </p>
+    </div>
+</div>
+    
+<%- include ../layouts/footer.ejs %>
+
